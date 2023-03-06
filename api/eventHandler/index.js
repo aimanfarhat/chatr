@@ -92,6 +92,22 @@ module.exports = async function (context, req) {
     context.log(`### New chat ${chatName} was created by ${userId}`)
   }
 
+  if (eventName === 'humanChat') {
+
+
+    const chatName = req.body.name
+    const chatId = req.body.id
+    const chatEntity = { id: chatId, name: chatName }
+    //state.upsertChat(chatId, chatEntity)
+
+    serviceClient.sendToAll({
+      chatEvent: 'humanChat',
+      data: JSON.stringify(chatEntity),
+    })
+
+    context.log(`### Handoff to Human requested for chatID ${chatId}`)
+  }
+
   if (eventName === 'joinChat') {
     const chatId = req.body
     let chat = await state.getChat(chatId)
