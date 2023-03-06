@@ -19,6 +19,9 @@
 
   <!-- App stuff -->
   <script type="module" src="js/app.js"></script>
+
+
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 
 <body>
@@ -36,7 +39,7 @@
       <!-- box for group chats -->
       <div class="column">
         <div class="title is-4">
-          Group Chats
+          Current Sessions
           <button @click="newChat()" class="button is-info is-pulled-right"><i class="fas fa-comment-dots"></i>&nbsp;
             New Chat</button>
         </div>
@@ -62,7 +65,7 @@
       <!-- box for online users -->
       <div class="column">
         <div class="title is-4">
-          Online Users
+          Online Channels / Agents
           <a href="/.auth/logout?post_logout_redirect_uri=/login.html" class="button is-info is-pulled-right"
             v-if="isAzureStaticWebApp">
             <i class="fas fa-sign-out-alt"></i>&nbsp; Logout
@@ -76,8 +79,13 @@
                 :class="{ 'userSelf': userId == user.userId, 'userAway': onlineUser.idle }">
                 <span>
                   <i class="fab fa-twitter" v-if="onlineUser.userProvider == 'twitter'"></i>
-                  <i class="fab fa-microsoft" v-if="onlineUser.userProvider == 'aad'"></i>
-                  <i class="fab fa-github-alt" v-if="onlineUser.userProvider == 'github'"></i>
+                  <i class="fas fa-user
+                  
+                  
+                  " v-if="onlineUser.userProvider == 'aad'"></i>
+                  <i class="fab fa-github-alt" v-if="onlineUser.userProvider == 'github'"></i>             
+                  <i class="fab fa-whatsapp" v-if="onlineUser.userProvider == 'whatsapp'"></i>
+                  <i class="fas fa-robot" v-if="onlineUser.userProvider == 'diagflow'"></i>              
                   <i class="fas fa-poo" v-if="onlineUser.userProvider == 'fake'"></i>
                 </span>
                 &nbsp;{{ onlineUser.userName }} <span>&nbsp;&nbsp;<i class="fas fa-bed"
@@ -131,7 +139,7 @@
 
   </section>
 
-  <footer>Chatr v0.1.0, Ben Coleman 2021 <a href="https://github.com/benc-uk/chatr" target="_blank">[GitHub Project]</a>
+  <footer>Demo Environment</a>
   </footer>
 </body>
 
